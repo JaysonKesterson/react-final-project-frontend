@@ -1,17 +1,22 @@
 import React from 'react';
 import {Component} from 'react';
 import './App.css';
+import Login from "./components/Login.js"
+import { connect } from "react-redux";
+import { getCurrentUser } from "./actions/currentUser.js";
 
-export default class App extends Component{
+class App extends Component{
 
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/users").then(response => response.json()).then(console.log)
+    this.props.getCurrentUser()
   }
 
   render() {
   return (
-    "hello"
+    <Login/>
   );
 }
 
 }
+
+export default connect(null, {getCurrentUser})(App)
