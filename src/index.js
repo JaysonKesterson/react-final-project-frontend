@@ -9,12 +9,14 @@ import { Provider } from 'react-redux'
 import usersReducer from './reducers/users.js'
 import currentUser from './reducers/currentUser.js'
 import loginForm from './reducers/loginForm.js'
+import stores from './reducers/stores.js'
 
 
 const reducer = combineReducers({
   user: usersReducer,
   currentUser,
-  loginForm
+  loginForm,
+  stores
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
