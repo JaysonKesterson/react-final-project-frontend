@@ -1,3 +1,6 @@
+import { resetLoginForm } from './loginForm.js'
+import { getStores } from './storeInfo.js'
+
 // sync
 export const setCurrentUser = user => {
     return {
@@ -24,12 +27,24 @@ export const login = credentials => {
         if (user.error) {
             (alert(user.error))
         } else {
-            dispatch(setCurrentUser(user))
+            dispatch(setCurrentUser(user.data))
+            dispatch(getStores())
+            dispatch(resetLoginForm())
         }
     
        })
        .catch(console.log)
    } 
+}
+
+export const logout = () => {
+    return dispatch => {
+        dispatch(clearCurrentUser())
+        return fetch('http://localhost:3000/api/v1/logout', {
+            credentials: "include",
+            method: "DELETE"
+        })
+    }
 }
 
 export const getCurrentUser = () => {
@@ -46,10 +61,17 @@ export const getCurrentUser = () => {
          if (user.error) {
              (alert(user.error))
          } else {
-             dispatch(setCurrentUser(user))
+             dispatch(setCurrentUser(user.data))
+             dispatch(getStores())
          }
      
         })
         .catch(console.log)
     } 
  }
+
+export const clearCurrentUser = () => {
+    return{
+        type: "CLEAR_CURRENT_USER"
+    }
+}
