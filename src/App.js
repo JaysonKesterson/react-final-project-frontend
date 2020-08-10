@@ -8,6 +8,8 @@ import AppContainer from './components/AppContainer';
 import UserProfile from './components/UserProfile';
 import Login from "./components/Login.js"
 import Signup from "./components/Signup.js"
+import Home from "./components/Home.js"
+import createStoreForm from "./components/createStoreForm.js"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
@@ -18,14 +20,16 @@ class App extends Component{
   }
 
   render() {
+    const { loggedIn } = this.props
   return (
     <Router>
     <div className="App">
-    <NavBar/>
+    { loggedIn ? <NavBar/> : <Home/>}
     <AppContainer/>
       <Route exact path='/login' component={Login}/>
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/profile' component={UserProfile}/>
+      <Route exact path='/stores/new' component={createStoreForm}/>
     </div>
     </Router>
   );
@@ -33,4 +37,10 @@ class App extends Component{
 
 }
 
-export default connect(null, {getCurrentUser})(App)
+const mapStateToProps = state => {
+  return ({
+    loggedIn: !!state.currentUser
+  })
+}
+
+export default connect(mapStateToProps, {getCurrentUser})(App)
