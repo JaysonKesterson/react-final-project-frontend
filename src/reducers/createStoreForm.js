@@ -9,7 +9,7 @@ export default (state=initialState, action) => {
             ...state,
             [action.formData.name]: action.formData.value
             }
-            case "RESET_NEW_STORE_FORM":
+            case "CLEAR_NEW_STORE_FORM":
                 return initialState
         default:
             return state
