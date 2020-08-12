@@ -11,6 +11,8 @@ import Signup from "./components/Signup.js"
 import Home from "./components/Home.js"
 import createStoreForm from "./components/createStoreForm.js"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Store from './components/Store.js';
+import Stores from './components/Stores.js'
 
 
 class App extends Component{
@@ -20,7 +22,7 @@ class App extends Component{
   }
 
   render() {
-    const { loggedIn } = this.props
+    const { loggedIn, stores } = this.props
   return (
     <Router>
     <div className="App">
@@ -30,6 +32,15 @@ class App extends Component{
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/profile' component={UserProfile}/>
       <Route exact path='/stores/new' component={createStoreForm}/>
+      <Route exact path='/stores' component={Stores}/>
+      <Route exact path='/stores/:id' render={props => {
+        const store = stores.find(store => store.id === props.match.params.id)
+        return <Store store={store} {...props}/>
+      }}/>
+      <Route exact path='/stores/:id/edit' render={props => {
+        const store = stores.find(store => store.id === props.match.params.id)
+        return <createStoreForm store={store} {...props}/>
+      }}/>
     </div>
     </Router>
   );
@@ -39,7 +50,8 @@ class App extends Component{
 
 const mapStateToProps = state => {
   return ({
-    loggedIn: !!state.currentUser
+    loggedIn: !!state.currentUser,
+    stores: state.stores
   })
 }
 
