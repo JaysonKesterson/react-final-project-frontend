@@ -1,16 +1,18 @@
 import React from 'react';
 import { updateCreateStoreForm } from '../actions/createStoreForm.js'
 import { connect } from 'react-redux';
+import { createStore } from '../actions/createStoreForm.js'
 
 const createStoreForm = ( props ) => {
 
     const handleChange = event => {
         const { name, value } = event.target
-        updateCreateStoreForm(name,value)
+        props.updateCreateStoreForm(name,value)
     }
 
     const handleOnSubmit = event => {
         event.preventDefault()
+        props.createStore(props.name, props.userID, props.history)
     }
 
     return (
@@ -21,9 +23,11 @@ const createStoreForm = ( props ) => {
     )};
 
     const mapStateToProps = state => {
+        const userId = state.currentUser ? state.currentUser.id : "" 
         return{
-            name: state.createStoreForm.name
+            name: state.createStoreForm.name,
+            userID: userId
         }
     }
 
-export default connect(mapStateToProps, { updateCreateStoreForm})(createStoreForm);
+export default connect(mapStateToProps, { updateCreateStoreForm, createStore})(createStoreForm);
