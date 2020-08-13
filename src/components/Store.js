@@ -6,10 +6,9 @@ const Store = ({ store }) => {
     store ?
     <div>
     <h2>{store.attributes.name}</h2>
-    <p>{store.attributes.items}</p>
-    <Link to={`/trips/${store.id}/edit`}>Edit</Link>
+    {store.attributes.items.map( item => (<p key={item.id}><Link to={`/items/${item.id}`}>{item.name}</Link></p>))}
     </div> :
-    <p>No Store Found</p>
+    ""
     )
 }
 
