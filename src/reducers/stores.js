@@ -4,7 +4,11 @@ export default (state = [], action) => {
             return action.stores
         case "ADD_STORE":
             return state.concat(action.store)
-        default:
+        case "EDIT_STORE":
+            return state.map(store => store.id === action.store.id ? action.store : store)
+        case "DELETE_STORE":
+            return state.filter(store => store.id === action.storeId ? false : true)
+            default:
             return state
     }
 }
