@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 const Stores = (props) => {
-const storeCards = props.stores.map(store => (<><Link to={`/stores/${store.id}`} key={store.id}>{store.attributes.name}</Link><br/></>))
+const storeCards = props.stores.map(store => (<p key={store.id}><Link to={`/stores/${store.id}`}>{store.attributes.name}</Link></p>))
      return (
      storeCards 
    )
