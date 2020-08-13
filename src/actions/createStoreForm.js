@@ -36,8 +36,9 @@ export const createStore = (name, userId, history) => {
         })
             .then(response => response.json())
             .then(store => {
-                if (store.errors) {
-                    alert(store.errors)
+                if (store.error) {
+                    alert(store.error)
+                    dispatch(clearCreateStoreForm())
                 } else {
                 dispatch(addStore(store.data))
                 dispatch(clearCreateStoreForm())
