@@ -1,12 +1,20 @@
 import { resetLoginForm } from './loginForm.js'
 import { resetSignupForm } from './signupForm.js'
 import { getStores } from './storeInfo.js'
+import { getItems } from './itemInfo.js'
 
 // sync
 export const setCurrentUser = user => {
     return {
         type: "SET_CURRENT_USER",
         user
+    }
+}
+
+export const setCurrentUserStore = store => {
+    return {
+        type: "SET_CURRENT_USER_STORE",
+        store
     }
 }
 
@@ -30,6 +38,7 @@ export const login = (credentials, history) => {
         } else {
             dispatch(setCurrentUser(user.data))
             dispatch(getStores())
+            dispatch(getItems())
             dispatch(resetLoginForm())
             history.push('/')
         }
@@ -59,6 +68,7 @@ export const signup = (credentials, history) => {
          } else {
              dispatch(setCurrentUser(user.data))
              dispatch(getStores())
+             dispatch(getItems())
              dispatch(resetSignupForm())
              history.push('/')
          }
@@ -94,6 +104,30 @@ export const getCurrentUser = () => {
          } else {
              dispatch(setCurrentUser(user.data))
              dispatch(getStores())
+             dispatch(getItems())
+         }
+     
+        })
+        .catch(console.log)
+    } 
+ }
+
+ export const getCurrentUserStore = () => {
+     console.log("get request")
+    return dispatch => {
+        return fetch("http://localhost:3000/api/v1/get_current_user_store", {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        .then(response => response.json())
+        .then( store => {
+         if (store.error) {
+             (alert(store.error))
+         } else {
+             dispatch(setCurrentUserStore(store.data))
          }
      
         })
