@@ -11,6 +11,10 @@ import loginForm from './reducers/loginForm.js'
 import stores from './reducers/stores.js'
 import signupForm from './reducers/signupForm.js'
 import createStoreForm from './reducers/createStoreForm.js'
+import items from './reducers/items.js'
+import createItemForm from './reducers/createItemForm.js'
+import currentUserStore from './reducers/currentUserStore.js'
+
 
 
 const reducer = combineReducers({
@@ -18,7 +22,10 @@ const reducer = combineReducers({
   loginForm,
   stores, 
   signupForm,
-  createStoreForm
+  createStoreForm,
+  items,
+  createItemForm,
+  currentUserStore
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
