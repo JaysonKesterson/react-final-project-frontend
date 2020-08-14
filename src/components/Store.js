@@ -6,7 +6,7 @@ const Store = ({ store }) => {
     store ?
     <div>
     <h2>{store.attributes.name}</h2>
-    {store.attributes.items.map( item => (<p key={item.id}><Link to={`/items/${item.id}`}>{item.name}</Link></p>))}
+    {store.attributes.items.map( item => (<p key={item.id}><Link className="button" to={`/items/${item.id}`}>{item.name}</Link></p>))}
     </div> :
     ""
     )
