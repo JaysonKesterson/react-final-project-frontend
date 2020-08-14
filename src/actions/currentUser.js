@@ -18,6 +18,27 @@ export const setCurrentUserStore = store => {
     }
 }
 
+export const updateAddFundsForm = (name, value) => {
+    return {
+        type:"UPDATE_ADD_FUNDS_FORM",
+        formData: {name,value}
+    }
+}
+
+export const clearAddFundsForm = () => {
+    return {
+        type:"CLEAR_ADD_FUNDS_FORM",
+    }
+}
+
+export const updateUserFunds = user => {
+    return{
+        type: "UPDATE_USER_FUNDS",
+        user
+    }
+}
+
+
 
 
 // async
@@ -113,7 +134,6 @@ export const getCurrentUser = () => {
  }
 
  export const getCurrentUserStore = () => {
-     console.log("get request")
     return dispatch => {
         return fetch("http://localhost:3000/api/v1/get_current_user_store", {
             credentials: "include",
@@ -138,5 +158,34 @@ export const getCurrentUser = () => {
 export const clearCurrentUser = () => {
     return{
         type: "CLEAR_CURRENT_USER"
+    }
+}
+
+export const updateCurrentUserBalance = (userId, deposit, history) => {
+    return dispatch => {
+        console.log("dipatching")
+        const dataToSend = {
+            user: {
+            deposit: deposit
+            }
+        }
+        return fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+            credentials: "include",
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dataToSend)
+        })
+            .then(response => response.json())
+            .then(user => {
+                if (user.errors) {
+                    alert(user.errors)
+                } else {
+                dispatch(clearAddFundsForm())
+                dispatch(updateUserFunds(user.data))
+                history.push(`/profile`)
+                }
+            }) 
     }
 }
