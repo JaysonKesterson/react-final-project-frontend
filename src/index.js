@@ -14,6 +14,7 @@ import createStoreForm from './reducers/createStoreForm.js'
 import items from './reducers/items.js'
 import createItemForm from './reducers/createItemForm.js'
 import currentUserStore from './reducers/currentUserStore.js'
+import addFundsForm from './reducers/addFundsForm.js'
 
 
 
@@ -25,7 +26,8 @@ const reducer = combineReducers({
   createStoreForm,
   items,
   createItemForm,
-  currentUserStore
+  currentUserStore, 
+  addFundsForm
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
