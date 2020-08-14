@@ -18,6 +18,7 @@ import Stores from './components/Stores.js'
 import createItemForm from './components/CreateItemForm.js'
 import { getCurrentUserStore } from './actions/currentUser.js'
 import EditItemForm from './components/EditItemForm.js'
+import AddFundsForm from './components/AddFundsForm.js'
 
 
 
@@ -38,13 +39,14 @@ class App extends Component{
     <Router>
     <div className="App">
     { loggedIn ? <NavBar/> : <Home/>}
-    <AppContainer/>
+    <Route exact path='/' component={AppContainer}/>   
       <Route exact path='/stores/:id/items/new' component={createItemForm}/>
       <Route exact path='/login' component={Login}/>
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/profile' component={UserProfile}/>
       <Route exact path='/stores/new' component={createStoreForm}/>
       <Route exact path='/stores' component={Stores}/>
+      <Route exact path='/users/:id/addFunds' component={AddFundsForm}/>
       <Route exact path='/stores/:id' render={props => {
         const store = stores.find(store => store.id === props.match.params.id)
         return <Store store={store} {...props}/>
