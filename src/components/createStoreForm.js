@@ -16,10 +16,13 @@ const createStoreForm = ( props ) => {
     }
 
     return (
+        <div>
+        <h1>New Store Form</h1>
         <form onSubmit={handleOnSubmit}>
             <input name="name" onChange={handleChange} value={props.name} placeholder={"Name of Store"}/>
             <input type="submit" value="Create Store"/>
         </form>
+        </div>
     )};
 
     const mapStateToProps = state => {
