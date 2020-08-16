@@ -20,13 +20,14 @@ const EditStoreForm = ( props ) => {
     }
 
     return (
-        <>
+        <div className="login">
+        <h1>Edit Store Name</h1>
         <form onSubmit={handleOnSubmit}>
             <input name="name" onChange={handleChange} value={props.name} placeholder={props.store? props.store.attributes.name : "New Name of Store"} required/>
             <input type="submit" value="Update Store"/>
         </form>
         <button onClick={handleButtonClick}>Delete Store</button>
-        </>
+        </div>
     )};
 
     const mapStateToProps = state => {
