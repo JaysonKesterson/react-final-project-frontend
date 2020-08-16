@@ -11,7 +11,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: darkred;
   min-height:5vh;
   display: flex;
   flex-direction: row;
@@ -45,31 +45,61 @@
 a:link {
   text-decoration: none;
   padding: 10px 10px;
+  text-decoration-color: lightgrey;
 }
 
 .logout {
-  text-decoration: none;
-  background-color: #282c34;
+  font: bold 11px Arial;
+  background-color: darkred;
   min-height:5vh;
   display: flex;
   flex-direction: row;
-  float: right;
+  align-items: left;
   justify-content: left;
-  font-size: 20px;
-  color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: goldenrod;
+  border: none;
+  padding-top: 10px;
 }
 
-a.active {
-  color: turquoise;
+.login {
+  text-align: center;
 }
 
+.sign-up {
+  text-align: center;
+}
+
+a:link {
+  color:goldenrod;
+}
+
+a:visited {
+  color: goldenrod;
+}
 
 a:hover {
-  color: turquoise;
+  color: silver;
+}
+
+.shake {
+  margin-left: 450px;
+}
+
+.image2 {
+  margin-left: 10px;
+}
+
+.image3 {
+  margin-left: 10px;
 }
 
 h3 {
   float:left;
+}
+
+h1 {
+  text-align: center;
 }
 
 h2 {
@@ -79,7 +109,7 @@ h2 {
 .button {
   font: bold 11px Arial;
   text-decoration: none;
-  background-color: #EEEEEE;
+  background-color: darkred;
   color: #333333;
   padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
@@ -89,10 +119,23 @@ h2 {
 }
 
 body {
+  font: bold 12px Arial;
   background-color: lightgrey;
 }
 
+.itemcard {
+  margin-left: 30px;
+  transition: 0.3s;
+}
+
+
+.card-container {
+  margin-left: 30px;
+    padding: 2px 16px;
+}
+
 .button-center {
+  background-color: darkred;
   font: bold 11px Arial;
   text-align: center;
   text-decoration: none;
