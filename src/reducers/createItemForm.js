@@ -1,5 +1,6 @@
 const initialState = {
     price: 0,
+    imageUrl: "",
     name: "",
     description:"",
     condition:"",
