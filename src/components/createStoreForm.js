@@ -16,7 +16,7 @@ const createStoreForm = ( props ) => {
     }
 
     return (
-        <div>
+        <div className="login">
         <h1>New Store Form</h1>
         <form onSubmit={handleOnSubmit}>
             <input name="name" onChange={handleChange} value={props.name} placeholder={"Name of Store"}/>
