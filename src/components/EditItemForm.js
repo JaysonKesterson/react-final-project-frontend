@@ -18,6 +18,8 @@ const EditItemForm = ( props ) => {
 
     
     return (
+        <div className="login">
+        <h1>Edit Your Item</h1>
         <form onSubmit={handleOnSubmit}>
             <label>Selling Price (USD): </label>
             <input type="number" min="1" max="10000" name="price" onChange={handleChange} value={props.price} placeholder={props.item.attributes.price}/>
@@ -33,6 +35,7 @@ const EditItemForm = ( props ) => {
             <br/>
             <input type="submit" value="Create Item"/>
         </form>
+        </div>
     )};
 
     const mapStateToProps = state => {
