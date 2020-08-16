@@ -8,10 +8,11 @@ const NavBar = ( {currentUser, loggedIn} ) => {
 
     return(
         <div className="App-header">
+          <NavLink exact to="/">Home</NavLink>
           <NavLink exact to="/stores">All Stores</NavLink>
-          <NavLink exact to="/stores/new">Create Store</NavLink>
+          <NavLink exact to="/store/new">Create Store</NavLink>
           <NavLink exact to="/profile">Profile</NavLink>
-          { loggedIn ? <Logout/> : null}
+          <Logout/> 
         </div>
     )
 }
