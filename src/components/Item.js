@@ -19,11 +19,12 @@ const Item = ({ item, currentUser, loggedIn, history, destroyItem, stores, compl
     return (
     item ?
     <div>
+    <h2><img src={item.attributes.image_url} width="200" height="200"></img></h2>
     <h2>Name of Item: {item.attributes.name}</h2>
     <h2>Price of Item: ${item.attributes.price}</h2>
     <h2>Description: {item.attributes.description}</h2>
     <h2>Condition: {item.attributes.condition}</h2>
-    {loggedIn && item.attributes.store_id === parseInt(store.id) ? <button onClick={handleButtonClick}>Delete Item</button> : <button onClick={handleTransaction}>Purchase Item</button>}
+    <h2>{loggedIn && item.attributes.store_id === parseInt(store.id) ? <button onClick={handleButtonClick}>Delete Item</button> : <button onClick={handleTransaction}>Purchase Item</button>}</h2>
     </div> :
     ""
     )
