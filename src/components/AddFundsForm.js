@@ -17,10 +17,13 @@ const AddFundsForm = (props) => {
     }
 
     return (
+        <div className="login">
+        <h1>Add Funds To Your Balance!</h1>
         <form onSubmit={handleOnSubmit}>
             <input type="number" min="1" max="10000" name="deposit" onChange={handleChange} value={props.deposit} placeholder={"Amount"}/>
             <input type="submit" value="Add Funds"/>
         </form>
+        </div>
     )};
 
     const mapStateToProps = state => {
