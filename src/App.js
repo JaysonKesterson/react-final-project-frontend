@@ -19,6 +19,7 @@ import createItemForm from './components/CreateItemForm.js'
 import { getCurrentUserStore } from './actions/currentUser.js'
 import EditItemForm from './components/EditItemForm.js'
 import AddFundsForm from './components/AddFundsForm.js'
+import NotLoggedNav from './components/NotLoggedInNav.js'
 
 
 
@@ -38,18 +39,19 @@ class App extends Component{
   return (
     <Router>
     <div className="App">
-    { loggedIn ? <NavBar/> : <Home/>}
-    <Route exact path='/' component={AppContainer}/>   
+    { loggedIn ? <NavBar/> : <NotLoggedNav/>}
+      <Route exact path='/' component={AppContainer}/>   
       <Route exact path='/stores/:id/items/new' component={createItemForm}/>
       <Route exact path='/login' component={Login}/>
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/profile' component={UserProfile}/>
-      <Route exact path='/stores/new' component={createStoreForm}/>
+      <Route exact path='/store/new' component={createStoreForm}/>
       <Route exact path='/stores' component={Stores}/>
       <Route exact path='/users/:id/addFunds' component={AddFundsForm}/>
       <Route exact path='/stores/:id' render={props => {
         const store = stores.find(store => store.id === props.match.params.id)
-        return <Store store={store} {...props}/>
+        const storeItems = items.filter(item => parseInt(item.attributes.store_id) === parseInt(store.id))
+        return <Store store={store} items={storeItems} {...props}/>
       }}/>
       <Route exact path='/items/:id' render={props => {
         const item = items.find(item => item.id === props.match.params.id)
