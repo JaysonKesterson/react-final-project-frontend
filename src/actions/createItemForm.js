@@ -18,12 +18,13 @@ export const addItem = item => {
     }
 }
 
-export const createItem = (storeId, price, name, description, condition, history) => {
+export const createItem = (storeId, price, imageUrl, name, description, condition, history) => {
     return dispatch => {
         const dataToSend = {
             item: {
             store_id: storeId,
             price: price,
+            image_url: imageUrl,
             name: name,
             description: description,
             condition: condition
